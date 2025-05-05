@@ -7,10 +7,10 @@ app = Flask(__name__)
 CORS(app)
 
 # Heuristic weights
-HEIGHT_WEIGHT = -0.5
-ROWS_CLEARED_WEIGHT = 0.75
-HOLES_WEIGHT = -1.0
-BUMPINESS_WEIGHT = -0.2
+HEIGHT_WEIGHT = -0.510066
+ROWS_CLEARED_WEIGHT = 0.760666
+HOLES_WEIGHT = -1.35663
+BUMPINESS_WEIGHT = -0.184483
 
 MAX_DEPTH = 2  # Depth for minimax search
 
@@ -147,7 +147,7 @@ def all_pieces():
         [[0,7,0],[7,7,7]]   # T
     ]
 
-@app.route("/", methods=["POST"])
+@app.route("/api", methods=["POST"])
 def move():
     try:
         data = request.get_json()
@@ -169,7 +169,9 @@ def move():
         print(f"Error: {e}")
         return jsonify({'move':0,'rotate':0,'drop':True,'soft_drop':False})
 
-import os
+@app.route('/', methods=['GET'])
+def home():
+    return 'backend running'
+
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+    app.run(debug=False)

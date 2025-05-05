@@ -4,7 +4,7 @@ import copy
 import random
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', template_folder='templates')
 CORS(app)
 
 # Heuristic weights
@@ -148,6 +148,10 @@ def all_pieces():
         [[0,7,0],[7,7,7]]   # T
     ]
 
+@app.route("/", methods=["GET"])
+def index():
+    return render_template("index.html")
+
 @app.route("/api", methods=["POST"])
 def move():
     try:
@@ -169,10 +173,6 @@ def move():
     except Exception as e:
         print(f"Error: {e}")
         return jsonify({'move':0,'rotate':0,'drop':True,'soft_drop':False})
-
-@app.route('/', methods=['GET'])
-def home():
-    return 'backend running'
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))

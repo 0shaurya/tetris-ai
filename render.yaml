@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: tetris-ai-backend
+    env: python
+    buildCommand: ""
+    startCommand: python tetris-ai-backend/main.py
+    plan: free

@@ -8,7 +8,7 @@ let aiMoveInProgress = false;
 async function getAIMove(state) {
   try {
     const startTime = performance.now(); // Start timing
-    const res = await fetch("http://127.0.0.1:5000/", {
+    const res = await fetch("/api", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(state),

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tetris with AI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="game-container">
+    <h1>Tetris with AI</h1>
+    
+    <div class="game-area">
+      <canvas id="tetris" width="200" height="400"></canvas>
+      
+      <div class="controls">
+        <div class="score">Lines Cleared: <span id="score">0</span></div>
+        
+        <button id="toggleAIButton" class="btn">Toggle AI Control</button>
+        <button id="restartButton" class="btn">Restart Game</button>
+        
+        <div class="instructions">
+          <h3>Controls:</h3>
+          <p>←: Move Left</p>
+          <p>→: Move Right</p>
+          <p>↓: Move Down</p>
+          <p>↑: Rotate</p>
+          <!-- <p>Space: Hard Drop</p> -->
+        </div>
+      </div>
+    </div>
+    
+    <div class="ai-status">
+      <span id="statusText">AI: Disabled</span>
+      <div id="aiThinking" class="thinking-indicator hidden">Thinking...</div>
+    </div>
+  </div>
+
+  <!-- Load game modules in the correct order -->
+  <script src="game.js"></script>
+  <script src="ai.js"></script>
+  <script src="input.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
